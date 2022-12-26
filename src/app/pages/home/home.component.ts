@@ -20,7 +20,7 @@ export class HomeComponent {
     },
     {
       img: 'assets/img/bird.jpg',
-      title: 'Deer',
+      title: 'Bird',
       text: 'Birds Fight club',
     },
   ];
