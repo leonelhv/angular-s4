@@ -15,7 +15,6 @@ import { article } from '../interfaces/article.interface';
 export class FormComponent {
   @Input() articles!: article[];
   @Output() newArticle = new EventEmitter<article>();
-  existeTitle = false;
 
   regexURL = /(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png|svg)/g;
 
@@ -32,6 +31,7 @@ export class FormComponent {
 
   onSubmit() {
     if (this.articleForm.invalid) {
+      console.log(this.articleForm.value);
       this.articleForm.markAllAsTouched();
       return;
     }
