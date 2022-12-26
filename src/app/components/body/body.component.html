@@ -1,0 +1,63 @@
+<main class="text-white">
+  <section class="bg-zinc-300">
+    <div class="container mx-auto">
+      <h2 class="pt-32 text-5xl leading-[72px] text-center text-gray-800 mb-5">
+        Latest articles
+      </h2>
+      <p class="text-lg leading-9 text-center text-gray-500 pb-32">
+        Breaking news from the wild
+      </p>
+      <app-form
+        (newArticle)="addArticle($event)"
+        [articles]="articles"
+      ></app-form>
+      <div class="flex flex-col md:flex-row mb-10">
+        <div class="flex-1">
+          <div
+            class="grid grid-cols-1 gap-8 pb-60 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+          >
+            <div
+              class="w-full h-96 bg-cover bg-no-repeat bg-center relative"
+              *ngFor="let article of articles"
+              style="background-image:url('{{ article.img }}')"
+            >
+              <div class="absolute bottom-7 left-0 right-0">
+                <h4 class="text-center pt-6 pb-3 font-semibold text-3xl">
+                  {{ article.title }}
+                </h4>
+                <p class="text-center">{{ article.text }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex-none w-52">
+          <app-aside
+            [articles]="articles"
+            (titleArticle)="deleteArticle($event)"
+          ></app-aside>
+        </div>
+      </div>
+
+      <p class="text-center text-3xl leading-10 text-gray-700 pb-14">
+        Get notified about new amazing articles
+      </p>
+      <form class="flex justify-center">
+        <fieldset class="">
+          <p class="flex flex-wrap pb-60">
+            <input
+              type="email"
+              class="text-sm border border-gray-500 bg-transparent text-gray-500 rounded-tl-md rounded-bl-md p-2"
+              placeholder="E-mail"
+            />
+            <input
+              type="button"
+              class="px-4 py-2 bg-orange-500 rounded-tr-md rounded-br-md text-sm leading-7 text-center text-slate-50 border border-orange-500"
+              value="Send"
+            />
+          </p>
+        </fieldset>
+      </form>
+    </div>
+  </section>
+</main>
