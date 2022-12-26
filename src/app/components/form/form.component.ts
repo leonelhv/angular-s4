@@ -1,11 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import {
-  FormBuilder,
-  Validators,
-  AbstractControl,
-  FormControl,
-  ValidationErrors,
-} from '@angular/forms';
+import { FormBuilder, Validators, AbstractControl } from '@angular/forms';
 import { article } from '../interfaces/article.interface';
 @Component({
   selector: 'app-form',
@@ -16,7 +10,7 @@ export class FormComponent {
   @Input() articles!: article[];
   @Output() newArticle = new EventEmitter<article>();
 
-  regexURL = /(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png|svg)/g;
+  regexURL: RegExp = /(https?:\/\/.*\.(?:png|jpg|svg))/i;
 
   articleForm = this.fb.group({
     title: ['delfin', [Validators.required]],
